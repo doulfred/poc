@@ -2,12 +2,7 @@
   "name": "node-example",
   "version": "0.0.1",
   "dependencies": {
-    "express": "2.5.x",
-	"formidable": "1.0.x",
-	"url": "x",
-	"path": "x",
-	"fs": "x",
-	"querystring": "x"
+    "express": "2.5.x"
   },
   "engines": {
     "node": "0.8.x",
