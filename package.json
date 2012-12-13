@@ -1,13 +1,11 @@
 {
-  "name": "mongolabtest",
-  "version": "1.0.0",
-  "description": "Sample app using Heroku, Node.js, and MongoLab",
-  "engines":{
-    "node": "0.6.x",
-    "npm": "1.0.x"
-  },
+  "name": "node-example",
+  "version": "0.0.1",
   "dependencies": {
-    "connect": "1.8.x",
-    "mongodb": "0.9.x"
+    "express": "2.5.x"
+  },
+  "engines": {
+    "node": "0.8.x",
+    "npm": "1.1.x"
   }
 }
