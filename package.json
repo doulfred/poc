@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "dependencies": {
     "express": "3.0.4",
-	"formidable" : "1.0.11"
+	"formidable": "1.0.11"
   },
   "engines": {
     "node": "0.8.x",
