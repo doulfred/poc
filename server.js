@@ -14,8 +14,8 @@ function start(route, handle) {
 		//route(handle, pathname, response, request);
 	}
 	
-	//http.createServer(onRequest).listen(8888);
-	app.listen(process.env.C9_PORT || 8888);
+	//http.createServer(onRequest).listen(5000);
+	app.listen(process.env.C9_PORT || 5000);
 	
 	/*
 	app.get('/', function (req, res) {
