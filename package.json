@@ -6,7 +6,8 @@
 	"formidable": "1.0.x",
 	"url": "x",
 	"path": "x",
-	"fs": "x"
+	"fs": "x",
+	"querystring": "x"
   },
   "engines": {
     "node": "0.8.x",
