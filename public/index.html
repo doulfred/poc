@@ -1,93 +1,59 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Socket IO Demo</title>
-    <script src="http://code.jquery.com/jquery-1.5.min.js"></script>
-    <script src="/socket.io/socket.io.js"></script>
-    <script type="text/javascript">
-        $(document).ready(function () {
-            var socket = io.connect();
-            socket.on('message', function (data) {
-                var obj = JSON.parse(data);
-				if(obj.message) {
-					$('#message').text(obj.message);
-				} 
-				else if (obj.messageMySQL){
-					$('#messageMySQL').html(obj.messageMySQL);
-				}
-				else {
-					var time = new Date(obj.timestamp);
-					$('#timestamp').text( time.getHours() + ':' + time.getMinutes() + ':' + time.getSeconds() );
-					$('#clients').text(obj.clients);
-					$('#clientId').text(obj.clientId);
-				}
-            });
-			
-			
-			socket.on('GetDataMySQL', function (data) {
-                var obj = JSON.parse(data);
-				if(obj.messageMySQL) {
-					$('#messageMySQL').html(obj.messageMySQL);
-				}
-            });
-			
-			
-			socket.on('GetDataWS', function (data) {
-                var obj = JSON.parse(data);
-				if(obj.messageWS) {
-					$('#messageWS').html(obj.messageMySQL);
-				}
-            });
-			
-			
-			// listener
-            $("#poke").click(function() { socket.send("Poke"); });
-            $("#GetDataMySQL").click(function() { socket.emit("GetDataMySQL", "DataMysql"); });
-            $("#GetDataWS").click(function() { socket.emit("GetDataWS", "DataWS"); });
-        });
-    </script>
-	
-	
-	<link rel='stylesheet' href='styles/style.css' type='text/css' media='screen' />
-	
-	
+    <title>Loading...</title>
+	<style>
+		div {
+			background-color:#bca;
+			width:100px;
+			border:1px solid green;
+		}
+		
+		div.blockGray {
+			position:absolute;
+			background-color:#abc;
+			left:50px;
+			width:90px;
+			height:90px;
+			margin:5px;
+		}
+	</style>
+	<script src="http://code.jquery.com/jquery-latest.js"></script>
 </head>
+
 <body>
-    <div>
-		<img src="styles/img/test.png" alt="logo"/><br /><br />
-        <h2>D&eacute;mo Node.JS + Socket IO</h2>
-        <label for="timestamp">Timestamp</label>
-        <span id="timestamp"></span>
-        <br />
-        <label for="clients">NB Clients</label>
-        <span id="clients"></span>
-		<br />
-        <label for="clientId">Clients ID</label>
-        <span id="clientId"></span>
-        <br />
-        <label for="message">Message</label>
-        <span id="message"></span>
-        <br />
-        <button id="poke">Send poke !</button><br /> 
-		
-		<br />
-        <button id="GetDataMySQL">Get data from MySQL !</button>
-		<br />
-        <label for="messageMySQL">Message</label>
-        <div id="messageMySQL"></div>
-		
-		<br />
-		<br />
-        <button id="GetDataWS">Get data from WS !</button>
-		<br />
-        <label for="messageWS">Message WS</label>
-        <div id="messageWS"></div>
-    </div>
+  <button id="go">&raquo; Run</button>
+
+	<div id="block">Hello!</div>
+	<script>
+		$('title').html('jQuery ready.');
+		/* Using multiple unit types within one animation. */
+
+		$("#go").click(function(){
+		  $("#block").animate({
+			width: "70%",
+			opacity: 0.4,
+			marginLeft: "0.6in",
+			fontSize: "3em",
+			borderWidth: "10px"
+		  }, 1500 );
+		});
+	</script>
+
+	<button id="left">&laquo;</button> <button id="right">&raquo;</button>
+	<div class="blockGray"></div>
+
+	<script>
+		$("#right").click(function(){
+		  $(".blockGray").animate({"left": "+=50px"}, "slow");
+		});
+
+		$("#left").click(function(){
+		  $(".blockGray").animate({"left": "-=50px"}, "slow");
+		});
+	</script>
+
 	
 	
-	<form action="/upload" enctype="multipart/form-data" method="post">
-		<input type="file" name="upload" multiple="multiple">
-		<input type="submit" value="Transférer le fichier" />
-	</form>
 </body>
 </html>
