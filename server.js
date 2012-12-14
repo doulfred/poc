@@ -18,4 +18,6 @@ function start() {
 }
 
 
-start();
+// exportation de la fonction de lancement du serveur
+exports.start = start;
+//start();
