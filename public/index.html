@@ -8,7 +8,7 @@
 			overflow:auto;
 		}
 		ul{
-			list-style-type:none; 
+			/*list-style-type:none; */
 		}
 		
 		.intro{
@@ -21,7 +21,7 @@
 		}
 		.spacer{
 			margin:10px;
-			padding:10px;
+			padding-left:20px;
 		}
 	</style>
 	<script src="http://code.jquery.com/jquery-latest.js"></script>
@@ -93,7 +93,7 @@
 					</div>
 					
 					<div>
-						<canvas id="myCanvas" width="500" height="500" style="border:1px solid #000000;">
+						<canvas id="myCanvas" width="400" height="500" style="border:1px solid #000000;">
 						</canvas> 
 					</div>
 					
@@ -126,7 +126,7 @@
 		var socket = io.connect('http://localhost:5000');
 		
 		// qrcode
-		var txtQRcode = "http://google.fr";
+		var txtQRcode = "http://mirman.frederic.free.fr/m/";
 		// canvas
 		var colorChose = "#40A497";
 		var radiusChose = 5;

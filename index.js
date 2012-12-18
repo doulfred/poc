@@ -30,7 +30,7 @@ server.io.sockets.on('connection', function(socket) {
 			}
 			else{
 				console.log('Change nickname', nickname);
-				var connected_msg = '<b style="float:right;color:'+_color+'">"' + _nickname + '" a changé son surnom pour "'+ nickname +'".</b>';
+				var connected_msg = '<b style="float:right;color:'+_color+'">"' + _nickname + '" a changÃ© son surnom pour "'+ nickname +'".</b>';
 			}
 			_nickname = nickname;
 			// send message
@@ -43,7 +43,7 @@ server.io.sockets.on('connection', function(socket) {
 		// Get the variable 'nickname'
 		socket.get('nickname', function (err, nickname) {
 			console.log('Chat message by', nickname);
-			server.io.sockets.volatile.emit( 'broadcast_msg' , '<font style="color:'+_color+'">'+nickname + ': ' + msg +'</font>' );
+			server.io.sockets.volatile.emit( 'broadcast_msg' , '<font style="float:left;color:'+_color+'">'+nickname + ': ' + msg +'</font>' );
 		});
 	});
 	
