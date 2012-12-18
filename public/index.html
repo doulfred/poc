@@ -3,7 +3,7 @@
 <head>
     <title>Loading...</title>
 	<style>
-		div {
+		#blockhello {
 			background-color:#bca;
 			width:100px;
 			border:1px solid green;
@@ -24,13 +24,13 @@
 <body>
   <button id="go">&raquo; Run</button>
 
-	<div id="block">Hello!</div>
+	<div id="blockhello">Hello!</div>
 	<script>
 		$('title').html('jQuery ready.');
 		/* Using multiple unit types within one animation. */
 
 		$("#go").click(function(){
-		  $("#block").animate({
+		  $("#blockhello").animate({
 			width: "70%",
 			opacity: 0.4,
 			marginLeft: "0.6in",
@@ -52,8 +52,72 @@
 		  $(".blockGray").animate({"left": "-=50px"}, "slow");
 		});
 	</script>
-
 	
+	
+	
+	
+	
+	
+	
+	<br><br><br><br><br><br><br>
+	qrcode
+	<div id="qrcode"></div>
+	
+    <h1>Bienvenue sur le chat</h1>
+ 
+	<label for="nickname-input">Votre surnom </label>
+	<input id="nickname-input" name="nickname-input" title="Surnom" type="text" size="30" />
+	<br/>
+    <label for="msg-input">Votre message </label>
+    <input id="msg-input" name="msg-input" title="Message" type="text" size="30" />
+    <p>Appuyez sur Entrée pour envoyer votre message</p>
+ 
+    <ul id="broadcast-msg"></ul>
+ 
+    <!-- Include the socket.io javascript on the client side -->
+    <script src="socket.io/socket.io.js"></script>
+    <script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+	<script src="public/script/jquery.qrcode.js"></script>
+	<script src="public/script/qrcode.js"></script>
+ 
+    <script>
+		// Establish the connection with the server
+		var socket = io.connect('http://localhost:5000');
+		$('#qrcode').qrcode({
+			text: "http://jetienne.com"
+		});	
+
+		// on every message recived we print the new datas inside the #broadcast-msg div
+		socket.on('broadcast_msg', function (data) {
+			console.log('Get broadcasted msg:', data);
+			var msg = '<li>' + data + '</li>';
+			$('#broadcast-msg').append(msg);
+		});
+	 
+		// Create a new socket connection
+		socket.on('connect', function() {
+	 
+			//socket.emit('set nickname', prompt('What is your nickname?'));
+	 
+			$('#nickname-input').change( function(){
+				var txt = $(this).val();
+				//$(this).val('');
+				socket.emit('set nickname', txt, function (data){
+													console.log('Emit nickname', data);
+												}
+				);
+			});
+			
+			$('#msg-input').change( function(){
+				var txt = $(this).val();
+				$(this).val('');
+				socket.emit('emit_msg', txt, function (data){
+					console.log('Emit Broadcast msg', data);
+				});
+			});
+	 
+		});
+    </script>
 	
 </body>
 </html>

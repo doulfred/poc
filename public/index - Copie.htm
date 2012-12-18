@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html class=" mod-js mod-borderradius mod-localstorage"><head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>Âpp </title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="This website allows you to shorten URL's, to upload pictures and files, to create secure passwords and to host some code.">
+		<meta name="keywords" content="Node.js, Express, Upload, Paste, Password, url, shortener, hébergement, upload, files, pictures, fichiers, images">
+		<meta name="google-site-verification" content="kHEE9SNjDGfWrgZ3_QcRnUOmObOC-WbDVGua5rbUrug">
+		<link media="screen" rel="stylesheet" type="text/css" href="script/style.css">
+		
+		<script src="script/jquery.js"></script><script src="script/bootstrap-all.js"></script><script src="script/app.js"></script><script src="script/locales.js"></script><script type="text/javascript" src="script/modernizr.js"></script>
+		<meta name="csrf-param" content="authenticity_token">
+<meta name="csrf-token" content="2d83d1806a19c39a451e5f67e64288b8b249909c">
+	</head>
+	<body>
+		<nav>
+			<div class="navbar navbar-inverse  navbar-fixed-top ">
+				<div class="navbar-inner">
+					<div class="container">
+						<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</a>
+						<a class="brand" href="http://xn--pp-oia.com/">Âpp</a>
+						<div class="nav-collapse">
+							<ul class="nav">
+								<li class="active">
+									<a href="http://xn--pp-oia.com/">Accueil</a>
+								</li>
+								<li>
+									<a href="http://xn--pp-oia.com/url">Raccourcisseur d’URL</a>
+								</li>
+								<li>
+									<a href="http://xn--pp-oia.com/upload">Hébergement de fichiers</a>
+								</li>
+								<li>
+									<a href="http://xn--pp-oia.com/password">Générateur de mots de passe</a>
+								</li>
+								<li>
+									<a href="http://xn--pp-oia.com/paste">Hébergement de code</a>
+								</li>
+								<li>
+									<a href="http://xn--pp-oia.com/appjs">appJS</a>
+								</li>
+							</ul>
+							<ul class="nav pull-right">
+								
+									<li>
+										<a href="http://xn--pp-oia.com/register">S’inscrire</a>
+									</li>
+									<li class="dropdown">
+										<a href="http://xn--pp-oia.com/login" class="dropdown-toggle" data-toggle="dropdown">Se connecter <b class="caret"></b></a>
+										<div class="dropdown-menu">
+											<form class="well form-vertical" action="/login" method="post">
+												<div><input name="authenticity_token" value="2d83d1806a19c39a451e5f67e64288b8b249909c" type="hidden"></div>
+												<input class="input-large" name="id" placeholder="Pseudo ou email" type="text"><br>
+												<input class="input-large" name="password" placeholder="mot de passe" type="password"><br>
+												<label class="checkbox">
+												<input name="stay_logged" type="checkbox"> Se souvenir de moi
+												</label>
+												<button type="submit" class="btn">Se connecter</button>
+											</form>
+										</div>
+									</li>
+								
+								
+							</ul>
+						</div>
+						<!--/.nav-collapse -->
+					</div>
+				</div>
+			</div>
+		</nav>
+		<div class="container main">
+			<section>
+				
+				
+				
+				
+				<style type="text/css">
+	body
+	{
+		overflow-x: hidden
+	}
+	header, header div.background
+	{
+		background: #27437B url("/images/motif.png");
+		padding: 45px 0 0 0;
+		color: white;
+		text-shadow: 2px 2px 0 #27437B;
+		border-bottom: 3px solid #5A72A6;
+		text-align: center;
+		margin-top: -5px;
+		position: relative
+	}
+	header section
+	{
+		background: -o-radial-gradient(
+			bottom center,
+			ellipse,
+			rgba(255, 255, 255, 0.5) -30%,
+			rgba(255, 255, 255, 0.8) -5%,
+			rgba(255, 255, 255, 0.2) 35%,
+			rgba(255, 255, 255, 0.1) 40%,
+			transparent 50%);
+		padding: 55px 0 50px 0
+	}
+
+	header h1
+	{
+		font-size: 50px;
+		color: white;
+		line-height: normal
+	}
+	header p
+	{
+		font-size: 25px
+	}
+
+	header div.background
+	{
+		position: absolute;
+		left: -5000px;
+		right: -5000px;
+		top: 0;
+		z-index: -1;
+		padding: 5px 0 0 0;
+		height: 100%
+	}
+
+	#body
+	{
+		padding: 0
+	}
+
+	div.services
+	{
+		margin-top: 15px
+	}
+	div.services div article
+	{
+		border-right: 2px solid #5A72A6;
+		text-align: center;
+		min-height: 220px;
+		padding-right: 10px
+	}
+	div.services div article h1
+	{
+		font-size: 16px;
+		text-align: center;
+		line-height: normal
+	}
+	div.services div article img
+	{
+		width: 105px;
+		margin: 0 5px 5px 0;
+		clear: both;
+		background: red url("images/sprite.svg#Password");
+	}
+	div.services div article p
+	{
+		text-align: justify
+	}
+
+	body [class*="span"]
+	{
+		margin: 0 15px 0 0
+	}
+	.row {
+		margin-left: 0;
+	}
+</style>
+<header class="jumbotron subhead logo">
+	<div class="background"></div>
+	<section>
+		<div>
+			<h1>Âpp.com</h1><br>
+			<p>Des services libres et gratuits pour un web ouvert.</p>
+		</div>
+	</section>
+</header>
+<div class="row services">
+	<div class="span3">
+		<article class="uploads">
+			<h1><a href="http://xn--pp-oia.com/upload">Hébergement de fichiers</a></h1>
+			<a href="http://xn--pp-oia.com/upload"><object data="script/sprite_003.svg"></object></a>
+			<p>Ce service permet le téléversement et la conservation de vos 
+fichiers. Une miniature est crée pour les images. Un système de tags et 
+de recherche par tags est aussi présent.</p>
+		</article>
+	</div>
+	<div class="span3">
+		<article class="pastecode">
+			<h1><a href="http://xn--pp-oia.com/paste">Hébergement de code</a></h1>
+			<a href="http://xn--pp-oia.com/paste"><object data="script/sprite.svg"></object></a>
+			<p>Ce service vous permet le téléversement et la conservation de vos 
+codes sources. Ce service est à utiliser pour le téléversement de tout 
+contenu écrit. Un système de tags et de recherche par tags est aussi 
+présent.</p>
+		</article>
+	</div>
+	<div class="span3">
+		<article class="password">
+			<h1><a href="http://xn--pp-oia.com/password">Générateur de mots de passe</a></h1>
+			<a href="http://xn--pp-oia.com/password"><object data="script/sprite_004.svg"></object></a>
+			<p>Ce service vous permet de générer des mots de passes aléatoires et
+ sécurisés. Les mots de passe générés sont uniques car crées à partir du
+ nom de domaine du site.</p>
+		</article>
+	</div>
+	<div class="span3">
+		<article class="url">
+			<h1><a href="http://xn--pp-oia.com/url">Raccourcisseur d’URL</a></h1>
+			<a href="http://xn--pp-oia.com/url"><object data="script/sprite_002.svg"></object></a>
+			<p>Ce service vous permet de raccourcir de longues URL afin de 
+pouvoir les partager simplement sur des réseaux sociaux, par mail ou sur
+ des forums.</p>
+		</article>
+	</div>
+</div>
+
+			</section>
+			<hr>
+			<footer class="footer">
+				<p class="pull-right"><a href="#">Haut de page</a></p>
+				<p>Réalisé par Gloorian, Trent et PH, hébergé par Trent. Logo de <a href="https://www.facebook.com/profile.php?id=1619317630&amp;ref=ts">Nathan LeBras</a>. <a href="http://xn--pp-oia.com/faq">FAQ</a>   |   <a href="mailto:nchagnet@myopera.com">Contactez-nous</a></p>
+			</footer>
+			<script type="text/javascript">
+				Modernizr.load();
+				Modernizr.load({
+						load: [
+							'//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js',
+							'/javascripts/bootstrap-all.min.js',
+							'/javascripts/app.min.js',
+							'/javascripts/locales.min.js'
+						],
+						complete: function() {
+							window.jQuery('.dropdown-toggle').dropdown();
+							window.jQuery(".collapse").collapse();
+							window.jQuery(".alert").alert();
+						}
+				});
+				
+				
+				
+				
+				
+				
+				
+			</script>
+		</div>
+	
+
+</body></html>
