@@ -60,8 +60,9 @@
 	
 	
 	<br><br><br><br><br><br><br>
-	qrcode
-	<div id="qrcode"></div>
+    <label for="qrc-input">Text contenu dans le QRCode </label>
+    <input id="qrc-input" name="qrc-input" title="text qrc" value="http://google.fr" type="text" size="30" />
+	<br/><div id="qrcode"></div>
 	
     <h1>Bienvenue sur le chat</h1>
  
@@ -83,9 +84,22 @@
     <script>
 		// Establish the connection with the server
 		var socket = io.connect('http://localhost:5000');
+		
 		$('#qrcode').qrcode({
-			text: "http://jetienne.com"
-		});	
+			text: "http://google.fr",
+			width: 156,
+			height: 156
+		});
+		
+		$('#qrc-input').change( function(){
+			$('#qrcode').empty();
+			var txt = $(this).val();
+			$('#qrcode').qrcode({
+				text: txt,
+				width: 156,
+				height: 156
+			});
+		});
 
 		// on every message recived we print the new datas inside the #broadcast-msg div
 		socket.on('broadcast_msg', function (data) {
