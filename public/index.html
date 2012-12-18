@@ -1,101 +1,186 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Loading...</title>
+    <title>Frédéric MIRMAN Labs</title>
 	<style>
-		#blockhello {
-			background-color:#bca;
-			width:100px;
-			border:1px solid green;
+		#windChat{
+			height:150px;
+			overflow:auto;
+		}
+		ul{
+			list-style-type:none; 
 		}
 		
-		div.blockGray {
-			position:absolute;
-			background-color:#abc;
-			left:50px;
-			width:90px;
-			height:90px;
-			margin:5px;
+		.intro{
+			background:url("public/img/motif.png") repeat scroll 0 0 #27437B;
+			height:60px;
+			color:white;
+			padding:10px;
+			border-bottom: 3px solid #5A72A6;
+			text-align:right;
+		}
+		.spacer{
+			margin:10px;
+			padding:10px;
 		}
 	</style>
 	<script src="http://code.jquery.com/jquery-latest.js"></script>
+	
+	<link rel="stylesheet" href="public/styles/jPicker-1.1.6.min.css"/>
+    <!-- Include the socket.io javascript on the client side -->
+    <script src="socket.io/socket.io.js"></script>
+    <script src="public/script/jpicker-1.1.6.min.js"></script>
+	<script src="public/script/jquery.qrcode.js"></script>
+	<script src="public/script/qrcode.js"></script>
+	
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1"> 
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
+	<script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
+	
+	<script src="public/script/jcanvas.min.js"></script>
+	
 </head>
 
 <body>
-  <button id="go">&raquo; Run</button>
+	<div data-role="page">
 
-	<div id="blockhello">Hello!</div>
+		<div data-role="header">
+			<h1>Frédéric MIRMAN Labs</h1>
+			
+		</div><!-- /header -->
+		
+		<div class="intro">
+			Ce site est un laboratoire de Frédéric Mirman sur les NTIC. Il tourne sur un serveur Node.JS et héberger par heroku via GIT.
+			<br/>Ce site est structuré selon le Responsive Design.
+		</div>
+		
+		<div data-role="content">		
+			
+			
+			<!--div class="ui-grid-b spacer">
+				<div class="ui-block-a spacer"-->
+			<table align="center">
+				<tr>
+				<td>
+			<div class="spacer">
+				<div style="float:left" class="spacer">
+					<h1 style="background:url(public/img/nodejs-light.png) 183px -8px no-repeat">
+						Découvrez 
+						 <!--img src="" style="top:5px" height="50px" /-->
+					</h1> 
+					
+					<h2>Bienvenue sur un chat fait en Node.JS</h2>
+				 
+					<label for="nickname-input">Votre surnom :</label>
+					<input id="nickname-input" name="nickname-input" title="Surnom" type="text" size="30" />
+					<br/>
+					<label for="msg-input">Votre message :</label>
+					<input id="msg-input" name="msg-input" title="Message" type="text" size="30" />
+					<p>Appuyez sur Entrée pour envoyer votre message</p>
+					<div id="windChat">
+						<ul id="broadcast-msg"></ul>
+					</div>
+				</div>
+		
+		
+				<!--div class="ui-block-b spacer"-->
+				<div style="float:left" class="spacer">
+					<h1>Découvrez HTML5 : Canvas</h1>
+					<div>
+						<span id="Inline"></span>
+						<input type="range" name="slider-fill" id="slider-fill" value="5" min="0" max="50" data-highlight="true" />
+					</div>
+					
+					<div>
+						<canvas id="myCanvas" width="500" height="500" style="border:1px solid #000000;">
+						</canvas> 
+					</div>
+					
+				</div>
+			
+				<!--div class="ui-block-c spacer"-->
+				<div style="float:left" class="spacer">
+					<h1>Découvrez jQuery QRcode</h1>
+					<label for="qrc-input">Votre text contenu dans le QRCode :</label>
+					<input id="qrc-input" name="qrc-input" title="text qrc" value="http://google.fr" type="text" size="30" />
+					<p>Appuyez sur Entrée pour afficher votre QRCode</p>
+					<br/><div id="qrcode"></div>
+				</div>
+			
+			</div>
+			</td>
+			</tr>
+			</table>
+				
+				
+		</div><!-- /content -->
+
+	</div><!-- /page -->
+	
+	
+	
+	
 	<script>
-		$('title').html('jQuery ready.');
-		/* Using multiple unit types within one animation. */
-
-		$("#go").click(function(){
-		  $("#blockhello").animate({
-			width: "70%",
-			opacity: 0.4,
-			marginLeft: "0.6in",
-			fontSize: "3em",
-			borderWidth: "10px"
-		  }, 1500 );
-		});
-	</script>
-	Eclatement complet
-	<button id="left">&laquo;</button> <button id="right">&raquo;</button>
-	<div class="blockGray"></div>
-
-	<script>
-		$("#right").click(function(){
-		  $(".blockGray").animate({"left": "+=50px"}, "slow");
-		});
-
-		$("#left").click(function(){
-		  $(".blockGray").animate({"left": "-=50px"}, "slow");
-		});
-	</script>
-	
-	
-	
-	
-	
-	
-	
-	<br><br><br><br><br><br><br>
-    <label for="qrc-input">Text contenu dans le QRCode </label>
-    <input id="qrc-input" name="qrc-input" title="text qrc" value="http://google.fr" type="text" size="30" />
-	<br/><div id="qrcode"></div>
-	
-    <h1>Bienvenue sur le chat</h1>
- 
-	<label for="nickname-input">Votre surnom </label>
-	<input id="nickname-input" name="nickname-input" title="Surnom" type="text" size="30" />
-	<br/>
-    <label for="msg-input">Votre message </label>
-    <input id="msg-input" name="msg-input" title="Message" type="text" size="30" />
-    <p>Appuyez sur Entrée pour envoyer votre message</p>
- 
-    <ul id="broadcast-msg"></ul>
- 
-    <!-- Include the socket.io javascript on the client side -->
-    <script src="socket.io/socket.io.js"></script>
-    <script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
-	<script src="public/script/jquery.qrcode.js"></script>
-	<script src="public/script/qrcode.js"></script>
- 
-    <script>
 		// Establish the connection with the server
 		var socket = io.connect('http://localhost:5000');
 		
-		$('#qrcode').qrcode({
-			text: "http://google.fr",
-			width: 156,
-			height: 156
+		// qrcode
+		var txtQRcode = "http://google.fr";
+		// canvas
+		var colorChose = "#40A497";
+		var radiusChose = 5;
+		
+		$(document).ready(function() {
+			// create qrcode
+			$('#qrcode').qrcode({
+				text: txtQRcode,
+				width: 156,
+				height: 156
+			});
+			
+			// event on canvas
+			$("#myCanvas").click(clickReporter);
+			
+			// init color
+			$('#Inline').jPicker(
+				{
+					window:{
+						position:{x:'30',y:'center'},
+						expandable: true,liveUpdate: true
+					},
+					color: {active: colorChose}
+				},
+				function(color, context)
+				{
+					var all = color.val('all');
+					colorChose = "#"+all.hex;
+				}
+			);
+		});
+		
+		
+		
+		function clickReporter(e) {
+			$("#myCanvas").drawArc({
+			  fillStyle: colorChose,
+			  x: e.pageX - $(this).position().left, 
+			  y: e.pageY - $(this).position().top,
+			  radius: radiusChose
+			});
+		}
+		
+		
+		
+		$('#slider-fill').live('change', function(event) {
+			radiusChose = $(this).val();
 		});
 		
 		$('#qrc-input').change( function(){
 			$('#qrcode').empty();
-			var txt = $(this).val();
+			txtQRcode = $(this).val();
 			$('#qrcode').qrcode({
-				text: txt,
+				text: txtQRcode,
 				width: 156,
 				height: 156
 			});
@@ -131,7 +216,7 @@
 			});
 	 
 		});
-    </script>
+	</script>
 	
 </body>
 </html>
