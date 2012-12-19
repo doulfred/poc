@@ -50,11 +50,11 @@ server.io.sockets.on('connection', function(socket) {
 			if (my_client.isNew == true ){
 				console.log('Connect', nickname);
 				var connected_msg = '<b style="float:right;color:'+_color+'">"' + nickname + '" est connecté.</b>';
+				my_client.isNew = false;
 			}
 			else{
 				console.log('Change nickname', nickname);
 				var connected_msg = '<b style="float:right;color:'+_color+'">"' + _nickname + '" a changé son surnom pour "'+ nickname +'".</b>';
-				my_client.isNew == false;
 			}
 			_nickname = nickname;
 			// send message

@@ -176,7 +176,7 @@ socket.on('connect', function() {
 	
 	$('#msg-input').change( function(){
 	//$('#msg-btn').live('click', function(event) {
-		var txt = $('#msg-input').val();
+		var txt = $(this).val();
 		$(this).val('');
 		socket.emit('emit_msg', txt, function (data){
 			console.log('Emit Broadcast msg', data);
