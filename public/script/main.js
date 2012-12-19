@@ -6,7 +6,7 @@ Attribut
 
 
 // Establish the connection with the server
-var socket = io.connect('http://whispering-escarpment-9237.herokuapp.com/'); // http://localhost:5000
+var socket = io.connect(window.location.hostname); // http://localhost:5000
 
 // qrcode
 var txtQRcode = "http://mirman.frederic.free.fr/m/";
