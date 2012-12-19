@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<meta name="viewport" content="width=device-width, initial-scale=1"> 
     <title>Frédéric MIRMAN Labs</title>
 	<style>
 		#windChat{
@@ -24,6 +25,11 @@
 			padding-right:10px;
 			/*width:33%;*/
 		}
+		
+		.imgText{
+			float:left;
+			margin:0 10px 5px 0;
+		}
 	</style>
 	<script src="http://code.jquery.com/jquery-latest.js"></script>
 	
@@ -35,7 +41,6 @@
 	<script src="public/script/qrcode.js"></script>
 	
 	
-	<meta name="viewport" content="width=device-width, initial-scale=1"> 
 	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
 	<script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
 	
@@ -60,17 +65,20 @@
 			
 			
 			<!--div class="ui-grid-b spacer">
-				<div class="ui-block-a spacer"-->
+				<div class="ui-block-a spacer">
 			<table align="center" cellpadding=0 cellspacing=0>
 				<tr>
-				<td>
+				<td>-->
 			<div>
-				<div style="float:left" class="spacer">
-					<h1 >Découvrez</h1> 
-					<img src="public/img/nodejs-light.png"/>
+				<div id="block-a" style="float:left;" class="spacer">
+					<h1 >Découvrez Node.JS</h1> 
+					<p>
+						<img src="public/img/nodejs-light.png"/>
+						 est un logiciel permettant d'exécuter du JavaScript côté serveur, contrairement à ce qu'on a l'habitude de voir avec le javascript côté client. 
+					</p>
 					
-					<br><br><br>
-					<h2>Bienvenue sur un chat fait en Node.JS</h2>
+					<br>
+					<h2>Voici un chat fait en Node.JS</h2>
 				 
 					<label for="nickname-input">Votre surnom :</label>
 					<input id="nickname-input" name="nickname-input" title="Surnom" type="text" size="30" />
@@ -85,8 +93,14 @@
 		
 		
 				<!--div class="ui-block-b spacer"-->
-				<div style="float:left" class="spacer">
+				<div  id="block-b"  style="float:left;" class="spacer">
 					<h1>Découvrez HTML5 : Canvas</h1>
+					<p>
+						<img src="public/img/HTML5.png" class="imgText"/>
+						L'élément canvas est un composant de HTML5 qui permet d'effectuer des rendus dynamiques d'images bitmap via des scripts. 
+					</p>
+					
+					<br><br><br>
 					<div>
 						<span id="Inline"></span>
 						<input type="range" name="slider-fill" id="slider-fill" value="5" min="0" max="50" data-highlight="true" />
@@ -100,8 +114,13 @@
 				</div>
 			
 				<!--div class="ui-block-c spacer"-->
-				<div style="float:left" class="spacer">
+				<div  id="block-c"  style="float:left;" class="spacer">
 					<h1>Découvrez jQuery QRcode</h1>
+					<p>
+						<img src="public/img/jquery-qrcode.jpg"  class="imgText"/>
+						jQuery est une bibliothèque JavaScript libre qui porte sur l'interaction entre JavaScript (comprenant Ajax) et HTML, et a pour but de simplifier des commandes communes de JavaScript.
+						<br>Le QRcode est un type de code-barres en deux dimensions (ou code matriciel datamatrix) constitué de modules noirs disposés dans un carré à fond blanc.
+					</p>
 					<label for="qrc-input">Votre text contenu dans le QRCode :</label>
 					<input id="qrc-input" name="qrc-input" title="text qrc" value="http://google.fr" type="text" size="30" />
 					<p>Appuyez sur Entrée pour afficher votre QRCode</p>
@@ -109,9 +128,9 @@
 				</div>
 			
 			</div>
-			</td>
+			<!--</td>
 			</tr>
-			</table><!---->
+			</table>-->
 				
 				
 		</div><!-- /content -->
@@ -141,9 +160,9 @@
 			
 			// event on canvas
 			$("#myCanvas").click(clickReporter);
-			resizeCanvas();
+			resizeCanvasBlock();
 			$(window).resize(function() {
-				resizeCanvas();
+				resizeCanvasBlock();
 			});
 			
 			
@@ -167,12 +186,20 @@
 		});
 		
 		
-		function resizeCanvas() {
+		function resizeCanvasBlock() {
 			var sizeW = $(window).width();
-			if ( sizeW > 332)
-				$( "#myCanvas" ).attr("width", $(window).width()/3);
-			else
-				$( "#myCanvas" ).attr("width", 300);
+			if ( sizeW > 800) { //332
+				$( "#myCanvas" ).width(sizeW/3 - 60);
+				$( "#block-a" ).width(sizeW/3 - 30);
+				$( "#block-b" ).width(sizeW/3 - 30);
+				$( "#block-c" ).width(sizeW/3 - 30);
+			}
+			else{
+				$( "#myCanvas" ).width(sizeW - 60);
+				$( "#block-a" ).width(sizeW - 30);
+				$( "#block-b" ).width(sizeW - 30);
+				$( "#block-c" ).width(sizeW - 30);
+			}
 		}
 		
 		
