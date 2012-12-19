@@ -154,8 +154,9 @@ socket.on('status_msg', function (data) {
 // on every message recived we print the new datas inside the #broadcast-msg div
 socket.on('broadcast_msg', function (data) {
 	console.log('Get broadcasted msg:', data);
-	var msg = '<br><span>' + data + '</span>';
-	$('#broadcast-msg').append(msg);
+	var msg = '<span><br>' + data + '</span>';
+	//$('#broadcast-msg').append(msg);
+	$('#broadcast-msg span:eq(0)').before(msg);
 });
 
 

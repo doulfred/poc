@@ -7,10 +7,10 @@
 ul{
 	/*list-style-type:none; */
 }
-
+/*
 canvas{
 	border: 2px solid gray;
-}
+}*/
 
 .intro{
 	background:url("public/img/motif.png") repeat scroll 0 0 #27437B;
