@@ -160,9 +160,8 @@ socket.on('connect', function() {
 
 	//socket.emit('set nickname', prompt('What is your nickname?'));
 
-	//$('#nickname-input').change( function(){
-	//$('#nickname-btn').click( function(){
-	$('#nickname-btn').live('click', function(event) {
+	$('#nickname-input').change( function(){
+	//$('#nickname-btn').live('click', function(event) {
 		var txt = $('#nickname-input').val();
 		//$(this).val('');
 		socket.emit('set nickname', txt, function (data){
@@ -171,8 +170,8 @@ socket.on('connect', function() {
 		);
 	});
 	
-	//$('#msg-input').change( function(){
-	$('#msg-btn').live('click', function(event) {
+	$('#msg-input').change( function(){
+	//$('#msg-btn').live('click', function(event) {
 		var txt = $('#msg-input').val();
 		$(this).val('');
 		socket.emit('emit_msg', txt, function (data){
