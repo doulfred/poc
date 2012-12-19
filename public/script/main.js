@@ -139,11 +139,18 @@ Chat
 ---------------------------------------------------------------------------------
 **/
 
+socket.on('status_msg', function (data) {
+	console.log('Get status msg:', data);
+	$('#nbLogged').text(data);
+});
+
+
+
 
 // on every message recived we print the new datas inside the #broadcast-msg div
 socket.on('broadcast_msg', function (data) {
 	console.log('Get broadcasted msg:', data);
-	var msg = '<li>' + data + '</li>';
+	var msg = '<br><span>' + data + '</span>';
 	$('#broadcast-msg').append(msg);
 });
 
