@@ -40,7 +40,8 @@ server.io.sockets.on('connection', function(socket) {
             "clients": _allClients,
 			"clientId": my_client.id
         }));*/
-		server.io.sockets.volatile.emit('status_msg', _allClients);
+		//server.io.sockets.volatile.emit('status_msg', _allClients);
+		my_client.obj.volatile.emit('status_msg', _allClients);
     }, 1000);
 	
 	
@@ -58,7 +59,8 @@ server.io.sockets.on('connection', function(socket) {
 			}
 			_nickname = nickname;
 			// send message
-			server.io.sockets.volatile.emit('broadcast_msg', connected_msg);
+			//server.io.sockets.volatile.emit('broadcast_msg', connected_msg);
+			my_client.obj.volatile.emit('broadcast_msg', connected_msg);
 		});
 	});
 	
@@ -68,7 +70,8 @@ server.io.sockets.on('connection', function(socket) {
 		socket.get('nickname', function (err, nickname) {
 			console.log('Chat message by', nickname);
 			if (nickname != '' && nickname != null){
-				server.io.sockets.volatile.emit( 'broadcast_msg' , '<font style="float:left;color:'+_color+'">'+nickname + ': ' + msg +'</font>' );
+				//server.io.sockets.volatile.emit( 'broadcast_msg' , '<font style="float:left;color:'+_color+'">'+nickname + ': ' + msg +'</font>' );
+				my_client.obj.volatile.emit( 'broadcast_msg' , '<font style="float:left;color:'+_color+'">'+nickname + ': ' + msg +'</font>' );
 			}
 		});
 	});
@@ -84,7 +87,7 @@ server.io.sockets.on('connection', function(socket) {
 		  var disconnected_msg = '<b style="float:right;color:'+_color+'">"' + nickname + '" est partie.</b>'
 
 		  // Broadcast to all users the disconnection message
-		  server.io.sockets.volatile.emit( 'broadcast_msg' , disconnected_msg);
+		  my_client.obj.volatile.emit( 'broadcast_msg' , disconnected_msg);
 		});
 	});
 });
