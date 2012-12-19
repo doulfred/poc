@@ -41,7 +41,7 @@ server.io.sockets.on('connection', function(socket) {
 			"clientId": my_client.id
         }));*/
 		//server.io.sockets.volatile.emit('status_msg', _allClients);
-		my_client.obj.volatile.emit('status_msg', _allClients);
+		socket.volatile.emit('status_msg', _allClients);
     }, 1000);
 	
 	
@@ -50,17 +50,17 @@ server.io.sockets.on('connection', function(socket) {
 		socket.set('nickname', nickname, function() {
 			if (my_client.isNew == true ){
 				console.log('Connect', nickname);
-				var connected_msg = '<b style="float:right;color:'+_color+'">"' + nickname + '" est connecté.</b>';
+				var connected_msg = '<b style="text-align:right;color:'+_color+'">"' + nickname + '" est connecté.</b>';
 				my_client.isNew = false;
 			}
 			else{
 				console.log('Change nickname', nickname);
-				var connected_msg = '<b style="float:right;color:'+_color+'">"' + _nickname + '" a changé son surnom pour "'+ nickname +'".</b>';
+				var connected_msg = '<b style="text-align:right;color:'+_color+'">"' + _nickname + '" a changé son surnom pour "'+ nickname +'".</b>';
 			}
 			_nickname = nickname;
 			// send message
 			//server.io.sockets.volatile.emit('broadcast_msg', connected_msg);
-			my_client.obj.volatile.emit('broadcast_msg', connected_msg);
+			server.io.sockets.volatile.emit('broadcast_msg', connected_msg);
 		});
 	});
 	
@@ -71,7 +71,7 @@ server.io.sockets.on('connection', function(socket) {
 			console.log('Chat message by', nickname);
 			if (nickname != '' && nickname != null){
 				//server.io.sockets.volatile.emit( 'broadcast_msg' , '<font style="float:left;color:'+_color+'">'+nickname + ': ' + msg +'</font>' );
-				my_client.obj.volatile.emit( 'broadcast_msg' , '<font style="float:left;color:'+_color+'">'+nickname + ': ' + msg +'</font>' );
+				server.io.sockets.volatile.emit( 'broadcast_msg' , '<font style="float:left;color:'+_color+'">'+nickname + ': ' + msg +'</font>' );
 			}
 		});
 	});
@@ -87,7 +87,7 @@ server.io.sockets.on('connection', function(socket) {
 		  var disconnected_msg = '<b style="float:right;color:'+_color+'">"' + nickname + '" est partie.</b>'
 
 		  // Broadcast to all users the disconnection message
-		  my_client.obj.volatile.emit( 'broadcast_msg' , disconnected_msg);
+		  server.io.sockets.volatile.emit( 'broadcast_msg' , disconnected_msg);
 		});
 	});
 });
