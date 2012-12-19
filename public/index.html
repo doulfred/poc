@@ -9,7 +9,7 @@
 	
 	<link rel="stylesheet" href="public/styles/jPicker-1.1.6.min.css"/>
     <!-- Include the socket.io javascript on the client side -->
-    <script src="socket.io/socket.io.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
     <script src="public/script/jpicker-1.1.6.min.js"></script>
 	<script src="public/script/jquery.qrcode.js"></script>
 	<script src="public/script/qrcode.js"></script>
@@ -35,7 +35,7 @@
 		</div><!-- /header -->
 		
 		<div class="intro">
-			Ce site est un laboratoire de Frédéric Mirman sur les NTIC. Il tourne sur un serveur Node.JS et héberger par heroku via GIT.
+			Ce site est un laboratoire de Frédéric Mirman sur les NTIC. Il tourne sur un serveur Node.JS et héberger par Heroku via GIT.
 			<br/>Ce site est structuré selon le Responsive Design.
 		</div>
 		
@@ -51,13 +51,13 @@
 				<div id="block-a" style="float:left;" class="spacer">
 					<h1 >Découvrez Node.JS</h1> 
 					<p>
-						<img src="public/img/nodejs-light.png"/>
-						 est un logiciel permettant d'exécuter du JavaScript côté serveur, contrairement à ce qu'on a l'habitude de voir avec le javascript côté client. 
+						<img src="public/img/nodejs-light.png" class="imgText"/>
+						C'est un logiciel permettant d'exécuter du JavaScript côté serveur, contrairement à ce qu'on a l'habitude de voir avec le javascript côté client. 
 					</p>
 					
 					<br>
 					<h2>Voici un chat fait en Node.JS</h2>
-				 
+				 
 					<label for="nickname-input">Votre surnom :</label>
 					<input id="nickname-input" name="nickname-input" title="Surnom" type="text" size="30" />
 					<a href="#"  id="nickname-btn" data-role="button" data-icon="plus" data-inline="true">Entrer</a> 
