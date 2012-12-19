@@ -174,10 +174,10 @@ socket.on('connect', function() {
 		);
 	});
 	
-	$('#msg-input').change( function(){
-	//$('#msg-btn').live('click', function(event) {
-		var txt = $(this).val();
-		$(this).val('');
+	//$('#msg-input').change( function(){
+	$('#msg-btn').live('click', function(event) {
+		var txt = $('#msg-input').val();
+		$('#msg-input').val('');
 		socket.emit('emit_msg', txt, function (data){
 			console.log('Emit Broadcast msg', data);
 		});
