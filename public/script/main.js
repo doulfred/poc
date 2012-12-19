@@ -20,6 +20,10 @@ Lanceur
 =================================================================================
 **/
 
+$(document).bind("mobileinit", function() {
+  $.support.touchOverflow = true;
+  $.mobile.touchOverflowEnabled = true;
+});
 
 
 
@@ -160,8 +164,8 @@ socket.on('connect', function() {
 
 	//socket.emit('set nickname', prompt('What is your nickname?'));
 
-	$('#nickname-input').change( function(){
-	//$('#nickname-btn').live('click', function(event) {
+	//$('#nickname-input').change( function(){
+	$('#nickname-btn').live('click', function(event) {
 		var txt = $('#nickname-input').val();
 		//$(this).val('');
 		socket.emit('set nickname', txt, function (data){

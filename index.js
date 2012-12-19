@@ -67,7 +67,9 @@ server.io.sockets.on('connection', function(socket) {
 		// Get the variable 'nickname'
 		socket.get('nickname', function (err, nickname) {
 			console.log('Chat message by', nickname);
-			server.io.sockets.volatile.emit( 'broadcast_msg' , '<font style="float:left;color:'+_color+'">'+nickname + ': ' + msg +'</font>' );
+			if (nickname != '' && nickname != null){
+				server.io.sockets.volatile.emit( 'broadcast_msg' , '<font style="float:left;color:'+_color+'">'+nickname + ': ' + msg +'</font>' );
+			}
 		});
 	});
 	
