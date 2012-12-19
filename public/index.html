@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta name="viewport" content="width=device-width, initial-scale=1"> 
+	<meta name="viewport" content="minimum-scale=1.0, width=device-width, maximum-scale=0.6667, user-scalable=no" />
+	<!--meta name="viewport" content="width=device-width, initial-scale=1"--> 
     <title>Frédéric MIRMAN Labs</title>
 	<style>
 		#windChat{
@@ -82,10 +83,12 @@
 				 
 					<label for="nickname-input">Votre surnom :</label>
 					<input id="nickname-input" name="nickname-input" title="Surnom" type="text" size="30" />
+					<a  id="nickname-btn" data-role="button" data-icon="plus" data-inline="true">Entrer</a> 
+					
 					<br/>
 					<label for="msg-input">Votre message :</label>
 					<input id="msg-input" name="msg-input" title="Message" type="text" size="30" />
-					<p>Appuyez sur Entrée pour envoyer votre message</p>
+					<a  id="msg-btn" data-role="button" data-icon="check" data-inline="true">Envoyer</a> 
 					<div id="windChat">
 						<ul id="broadcast-msg"></ul>
 					</div>
@@ -123,8 +126,9 @@
 					</p>
 					<label for="qrc-input">Votre text contenu dans le QRCode :</label>
 					<input id="qrc-input" name="qrc-input" title="text qrc" value="http://google.fr" type="text" size="30" />
-					<p>Appuyez sur Entrée pour afficher votre QRCode</p>
-					<br/><div id="qrcode"></div>
+					<a  id="qrc-btn" data-role="button" data-icon="check"  data-inline="true">Générer</a> 
+					<br/>
+					<div id="qrcode" style="float:right;" ></div>
 				</div>
 			
 			</div>
@@ -219,9 +223,10 @@
 			radiusChose = $(this).val();
 		});
 		
-		$('#qrc-input').change( function(){
+		//$('#qrc-input').change( function(){
+		$('#qrc-btn').click( function(){
 			$('#qrcode').empty();
-			txtQRcode = $(this).val();
+			txtQRcode = $('#qrc-input').val();
 			$('#qrcode').qrcode({
 				text: txtQRcode,
 				width: 156,
@@ -241,8 +246,9 @@
 	 
 			//socket.emit('set nickname', prompt('What is your nickname?'));
 	 
-			$('#nickname-input').change( function(){
-				var txt = $(this).val();
+			//$('#nickname-input').change( function(){
+			$('#nickname-btn').click( function(){
+				var txt = $('#nickname-input').val();
 				//$(this).val('');
 				socket.emit('set nickname', txt, function (data){
 													console.log('Emit nickname', data);
@@ -250,8 +256,9 @@
 				);
 			});
 			
-			$('#msg-input').change( function(){
-				var txt = $(this).val();
+			//$('#msg-input').change( function(){
+			$('#msg-btn').click( function(){
+				var txt = $('#msg-input').val();
 				$(this).val('');
 				socket.emit('emit_msg', txt, function (data){
 					console.log('Emit Broadcast msg', data);
