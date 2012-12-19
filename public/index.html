@@ -13,15 +13,16 @@
 		
 		.intro{
 			background:url("public/img/motif.png") repeat scroll 0 0 #27437B;
-			height:60px;
+			height:20%;
 			color:white;
 			padding:10px;
 			border-bottom: 3px solid #5A72A6;
-			text-align:right;
+			/*text-align:right;*/
 		}
 		.spacer{
-			margin:10px;
-			padding-left:20px;
+			/*margin-right:50px;*/
+			padding-right:10px;
+			/*width:33%;*/
 		}
 	</style>
 	<script src="http://code.jquery.com/jquery-latest.js"></script>
@@ -60,16 +61,15 @@
 			
 			<!--div class="ui-grid-b spacer">
 				<div class="ui-block-a spacer"-->
-			<table align="center">
+			<table align="center" cellpadding=0 cellspacing=0>
 				<tr>
 				<td>
-			<div class="spacer">
+			<div>
 				<div style="float:left" class="spacer">
-					<h1 style="background:url(public/img/nodejs-light.png) 183px -8px no-repeat">
-						Découvrez 
-						 <!--img src="" style="top:5px" height="50px" /-->
-					</h1> 
+					<h1 >Découvrez</h1> 
+					<img src="public/img/nodejs-light.png"/>
 					
+					<br><br><br>
 					<h2>Bienvenue sur un chat fait en Node.JS</h2>
 				 
 					<label for="nickname-input">Votre surnom :</label>
@@ -91,7 +91,7 @@
 						<span id="Inline"></span>
 						<input type="range" name="slider-fill" id="slider-fill" value="5" min="0" max="50" data-highlight="true" />
 					</div>
-					
+					<br>
 					<div>
 						<canvas id="myCanvas" width="400" height="500" style="border:1px solid #000000;">
 						</canvas> 
@@ -111,7 +111,7 @@
 			</div>
 			</td>
 			</tr>
-			</table>
+			</table><!---->
 				
 				
 		</div><!-- /content -->
@@ -141,6 +141,13 @@
 			
 			// event on canvas
 			$("#myCanvas").click(clickReporter);
+			resizeCanvas();
+			$(window).resize(function() {
+				resizeCanvas();
+			});
+			
+			
+			
 			
 			// init color
 			$('#Inline').jPicker(
@@ -158,6 +165,15 @@
 				}
 			);
 		});
+		
+		
+		function resizeCanvas() {
+			var sizeW = $(window).width();
+			if ( sizeW > 332)
+				$( "#myCanvas" ).attr("width", $(window).width()/3);
+			else
+				$( "#myCanvas" ).attr("width", 300);
+		}
 		
 		
 		
