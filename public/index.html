@@ -4,34 +4,7 @@
 	<meta name="viewport" content="minimum-scale=1.0, width=device-width, maximum-scale=0.6667, user-scalable=no" />
 	<!--meta name="viewport" content="width=device-width, initial-scale=1"--> 
     <title>Frédéric MIRMAN Labs</title>
-	<style>
-		#windChat{
-			height:150px;
-			overflow:auto;
-		}
-		ul{
-			/*list-style-type:none; */
-		}
-		
-		.intro{
-			background:url("public/img/motif.png") repeat scroll 0 0 #27437B;
-			height:20%;
-			color:white;
-			padding:10px;
-			border-bottom: 3px solid #5A72A6;
-			/*text-align:right;*/
-		}
-		.spacer{
-			/*margin-right:50px;*/
-			padding-right:10px;
-			/*width:33%;*/
-		}
-		
-		.imgText{
-			float:left;
-			margin:0 10px 5px 0;
-		}
-	</style>
+	
 	<script src="http://code.jquery.com/jquery-latest.js"></script>
 	
 	<link rel="stylesheet" href="public/styles/jPicker-1.1.6.min.css"/>
@@ -46,6 +19,10 @@
 	<script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
 	
 	<script src="public/script/jcanvas.min.js"></script>
+	
+	
+	<link rel="stylesheet" href="public/styles/style.css"/>
+	<script src="public/script/main.js"></script>
 	
 </head>
 
@@ -110,8 +87,11 @@
 					</div>
 					<br>
 					<div>
-						<canvas id="myCanvas" width="400" height="500" style="border:1px solid #000000;">
-						</canvas> 
+						Dessiner des cercles en cliquant sur le canvas ci-dessous. 
+						<center>
+							<canvas id="myCanvas" height="400" style="border:1px solid #000000;">
+							</canvas> 
+						</center>
 					</div>
 					
 				</div>
@@ -141,132 +121,6 @@
 
 	</div><!-- /page -->
 	
-	
-	
-	
-	<script>
-		// Establish the connection with the server
-		var socket = io.connect('http://localhost:5000');
-		
-		// qrcode
-		var txtQRcode = "http://mirman.frederic.free.fr/m/";
-		// canvas
-		var colorChose = "#40A497";
-		var radiusChose = 5;
-		
-		$(document).ready(function() {
-			// create qrcode
-			$('#qrcode').qrcode({
-				text: txtQRcode,
-				width: 156,
-				height: 156
-			});
-			
-			// event on canvas
-			$("#myCanvas").click(clickReporter);
-			resizeCanvasBlock();
-			$(window).resize(function() {
-				resizeCanvasBlock();
-			});
-			
-			
-			
-			
-			// init color
-			$('#Inline').jPicker(
-				{
-					window:{
-						position:{x:'30',y:'center'},
-						expandable: true,liveUpdate: true
-					},
-					color: {active: colorChose}
-				},
-				function(color, context)
-				{
-					var all = color.val('all');
-					colorChose = "#"+all.hex;
-				}
-			);
-		});
-		
-		
-		function resizeCanvasBlock() {
-			var sizeW = $(window).width();
-			if ( sizeW > 800) { //332
-				$( "#myCanvas" ).width(sizeW/3 - 60);
-				$( "#block-a" ).width(sizeW/3 - 30);
-				$( "#block-b" ).width(sizeW/3 - 30);
-				$( "#block-c" ).width(sizeW/3 - 30);
-			}
-			else{
-				$( "#myCanvas" ).width(sizeW - 60);
-				$( "#block-a" ).width(sizeW - 30);
-				$( "#block-b" ).width(sizeW - 30);
-				$( "#block-c" ).width(sizeW - 30);
-			}
-		}
-		
-		
-		
-		function clickReporter(e) {
-			$("#myCanvas").drawArc({
-			  fillStyle: colorChose,
-			  x: e.pageX - $(this).position().left, 
-			  y: e.pageY - $(this).position().top,
-			  radius: radiusChose
-			});
-		}
-		
-		
-		
-		$('#slider-fill').live('change', function(event) {
-			radiusChose = $(this).val();
-		});
-		
-		//$('#qrc-input').change( function(){
-		$('#qrc-btn').click( function(){
-			$('#qrcode').empty();
-			txtQRcode = $('#qrc-input').val();
-			$('#qrcode').qrcode({
-				text: txtQRcode,
-				width: 156,
-				height: 156
-			});
-		});
-
-		// on every message recived we print the new datas inside the #broadcast-msg div
-		socket.on('broadcast_msg', function (data) {
-			console.log('Get broadcasted msg:', data);
-			var msg = '<li>' + data + '</li>';
-			$('#broadcast-msg').append(msg);
-		});
-	 
-		// Create a new socket connection
-		socket.on('connect', function() {
-	 
-			//socket.emit('set nickname', prompt('What is your nickname?'));
-	 
-			//$('#nickname-input').change( function(){
-			$('#nickname-btn').click( function(){
-				var txt = $('#nickname-input').val();
-				//$(this).val('');
-				socket.emit('set nickname', txt, function (data){
-													console.log('Emit nickname', data);
-												}
-				);
-			});
-			
-			//$('#msg-input').change( function(){
-			$('#msg-btn').click( function(){
-				var txt = $('#msg-input').val();
-				$(this).val('');
-				socket.emit('emit_msg', txt, function (data){
-					console.log('Emit Broadcast msg', data);
-				});
-			});
-	 
-		});
-	</script>
 	
 </body>
 </html>
