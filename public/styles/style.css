@@ -2,10 +2,14 @@
 #broadcast-msg{
 	height:150px;
 	overflow:auto;
-	border: 1px solid black;
+	border: 1px solid gray;
 }
 ul{
 	/*list-style-type:none; */
+}
+
+canvas{
+	border: 2px solid gray;
 }
 
 .intro{
